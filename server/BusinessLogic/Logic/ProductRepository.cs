@@ -1,18 +1,27 @@
+using BusinessLogic.Data;
 using Core.Entities;
 using Core.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace BusinessLogic.Logic
 {
     public class ProductRepository : IProductRepository
     {
-        public Task<Product> GetProductByIdAsync()
+        private readonly MarketDbContext _context;
+
+        public ProductRepository(MarketDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public Task<IReadOnlyList<Product>> GetProductsAsync()
+        public async Task<Product> GetProductByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Product.Include(product => product.Brand).Include(product => product.Category).FirstOrDefaultAsync(product => product.Id == id);
+        }
+
+        public async Task<IReadOnlyList<Product>> GetProductsAsync()
+        {
+            return await _context.Product.Include(product => product.Brand).Include(product => product.Category).ToListAsync();
         }
     }
 }
