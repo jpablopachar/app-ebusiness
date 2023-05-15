@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jpabl\\Documents\\Aplicaciones\\Csharp\\app-ebusiness\\server\\Core\\Core.csproj": {}
+    "C:\\Users\\Pc\\Documents\\Aplicaciones\\Csharp\\Stacks\\SNA\\app-ebusiness\\server\\Core\\Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jpabl\\Documents\\Aplicaciones\\Csharp\\app-ebusiness\\server\\Core\\Core.csproj": {
+    "C:\\Users\\Pc\\Documents\\Aplicaciones\\Csharp\\Stacks\\SNA\\app-ebusiness\\server\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jpabl\\Documents\\Aplicaciones\\Csharp\\app-ebusiness\\server\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\Pc\\Documents\\Aplicaciones\\Csharp\\Stacks\\SNA\\app-ebusiness\\server\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\jpabl\\Documents\\Aplicaciones\\Csharp\\app-ebusiness\\server\\Core\\Core.csproj",
-        "packagesPath": "C:\\Users\\jpabl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jpabl\\Documents\\Aplicaciones\\Csharp\\app-ebusiness\\server\\Core\\obj\\",
+        "projectPath": "C:\\Users\\Pc\\Documents\\Aplicaciones\\Csharp\\Stacks\\SNA\\app-ebusiness\\server\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\Pc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Pc\\Documents\\Aplicaciones\\Csharp\\Stacks\\SNA\\app-ebusiness\\server\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jpabl\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Pc\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -53,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
