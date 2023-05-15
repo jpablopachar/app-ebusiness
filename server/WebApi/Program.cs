@@ -22,6 +22,8 @@ builder.Services.AddDbContext<MarketDbContext>(options => options.UseSqlServer(b
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
 
 builder.Services.AddControllers();
+
+builder.Services.AddCors(option => option.AddPolicy("CorsRule", rule => rule.AllowAnyHeader().AllowAnyMethod().WithOrigins("*")));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -39,6 +41,8 @@ app.UseMiddleware<ExceptionMiddleware>();
 
 // app.UseHttpsRedirection();
 app.UseStatusCodePagesWithReExecute("/errors", "?code={0}");
+
+app.UseCors("CorsRule");
 
 app.UseAuthorization();
 
