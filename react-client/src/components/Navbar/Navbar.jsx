@@ -13,21 +13,49 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material'
+import { useState } from 'react'
 // import { styled } from '@mui/system'
+const mobile = {
+  '@media (minWidth: 768px)': {
+    display: 'none',
+  },
+}
+
+const desktop = {
+  '@media (minWidth: 768px)': {
+    display: 'flex',
+  },
+}
+
+const grow = {
+  '@media (minWidth: 768px)': {
+    flexGrow: 1,
+  },
+}
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false)
+
+  const openToggle = () => {
+    setOpen(true)
+  }
+
+  const closeToggle = () => {
+    setOpen(false)
+  }
+
   return (
     <AppBar position="static" sx={{ pt: '8px', pb: '8px' }}>
       <Container>
         <Toolbar>
-          <div>
-            <IconButton color="inherit">
+          <div style={{ display: 'flex', flexGrow: 1, ...mobile }}>
+            <IconButton color="inherit" onClick={openToggle}>
               <Icon fontSize="large"></Icon>
             </IconButton>
           </div>
-          <Drawer open={true}>
+          <Drawer open={open} onClose={closeToggle}>
             <List style={{ width: '250px' }}>
-              <ListItem button sx={{ p: 0 }}>
+              <ListItem button onClick={openToggle} sx={{ p: 0 }}>
                 <Link
                   color="inherit"
                   underline="none"
@@ -46,7 +74,7 @@ const Navbar = () => {
               </ListItem>
             </List>
           </Drawer>
-          <div style={{ flexGrow: '1' }}>
+          <div style={{ flexGrow: 1, ...grow }}>
             <Link
               color="inherit"
               underline="none"
@@ -60,7 +88,7 @@ const Navbar = () => {
               </Typography>
             </Link>
           </div>
-          <div>
+          <div style={{ display: 'none', ...desktop }}>
             <Button color="inherit" sx={{ fontSize: '14px', p: 0 }}>
               <Link
                 color="inherit"
