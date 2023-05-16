@@ -17,7 +17,7 @@ const MyForm = styled('form')`
   text-align: center;
 `
 
-export const Login = () => {
+const SignUp = () => {
   return (
     <Container sx={{ mt: '30px' }}>
       <Grid container justifyContent="center">
@@ -38,7 +38,23 @@ export const Login = () => {
             </Typography>
             <MyForm>
               <Grid container spacing={2}>
-                <Grid item xs={12} sx={{ mb: '20px' }}>
+                <Grid item xs={12} md={6} sx={{ mb: '20px' }}>
+                  <TextField
+                    type="text"
+                    label="Nombres"
+                    variant="outlined"
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item xs={12} md={6} sx={{ mb: '20px' }}>
+                  <TextField
+                    type="text"
+                    label="Apellidos"
+                    variant="outlined"
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item xs={12} md={12} sx={{ mb: '20px' }}>
                   <TextField
                     type="email"
                     label="Correo"
@@ -46,7 +62,7 @@ export const Login = () => {
                     fullWidth
                   />
                 </Grid>
-                <Grid item xs={12} sx={{ mb: '20px' }}>
+                <Grid item xs={12} md={12} sx={{ mb: '20px' }}>
                   <TextField
                     type="password"
                     label="Contraseña"
@@ -56,12 +72,12 @@ export const Login = () => {
                 </Grid>
                 <Grid item xs={12} sx={{ mb: '20px' }}>
                   <Button variant="contained" color="primary" fullWidth>
-                    Ingresar
+                    Crear Cuenta
                   </Button>
                 </Grid>
               </Grid>
               <Link href="/" variant="body1" sx={{ mt: '8px' }}>
-                ¿No tienes cuenta?, Regístrate
+                ¿Ya tienes cuenta?, Inicia Sesión
               </Link>
             </MyForm>
           </Card>
@@ -70,3 +86,5 @@ export const Login = () => {
     </Container>
   )
 }
+
+export default SignUp

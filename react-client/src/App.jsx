@@ -1,8 +1,14 @@
-import { Login } from "./components/auth/Login"
+import { ThemeProvider } from '@mui/material/styles'
+import SignUp from './components/Auth/SignUp'
+import Navbar from './components/Navbar/Navbar'
+import { theme } from './theme/theme'
 
 function App() {
   return (
-    <Login/>
+    <ThemeProvider theme={theme}>
+      <Navbar/>
+      <SignUp/>
+    </ThemeProvider>
   )
 }
 
