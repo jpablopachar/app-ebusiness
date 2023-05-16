@@ -17,7 +17,7 @@ const MyForm = styled('form')`
   text-align: center;
 `
 
-const SignUp = () => {
+export const SignUp = () => {
   return (
     <Container sx={{ mt: '30px' }}>
       <Grid container justifyContent="center">
@@ -86,5 +86,3 @@ const SignUp = () => {
     </Container>
   )
 }
-
-export default SignUp

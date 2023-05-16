@@ -1,0 +1,26 @@
+.mobile {
+    display: flex;
+    flex-grow: 1;
+}
+
+.desktop {
+    display: none;
+}
+
+.grow {
+    flex-grow: 1;
+}
+
+@media (min-width: 768px) {
+    .mobile {
+        display: none;
+    }
+
+    .desktop {
+        display: flex;
+    }
+
+    .grow {
+        flex-grow: 1;
+    }
+}
