@@ -1,0 +1,43 @@
+.container-mt {
+    margin-top: 30px;
+}
+
+.text-title {
+    font-weight: 600;
+    color: #494949;
+    margin-bottom: 10px;
+}
+
+.media {
+    height: 250px;
+    background-color: #F2F2F2;
+    margin: 15px 15px 0 15px;
+}
+
+.price {
+    float: right;
+    padding: 0 20px 0 20px;
+    background-color: #0F80AA;
+}
+
+.text-card {
+    font-weight: bold;
+    color: #656565;
+    margin-bottom: 8px;
+}
+
+.paper-img {
+    background-color: #F2F2F2;
+}
+
+.media-detalle {
+    width: 380px;
+    height: 380px;
+    margin: auto;
+}
+
+.text-detalle {
+    font-weight: 500;
+    color: #494949;
+    margin-bottom: 5px;
+}

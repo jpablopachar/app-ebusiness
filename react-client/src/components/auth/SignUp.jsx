@@ -10,6 +10,7 @@ import {
   Typography,
 } from '@mui/material'
 import { styled } from '@mui/system'
+import { useState } from 'react'
 
 const MyForm = styled('form')`
   margin-top: 40px;
@@ -17,7 +18,34 @@ const MyForm = styled('form')`
   text-align: center;
 `
 
-export const SignUp = () => {
+const clearUser = {
+  name: '',
+  lastName: '',
+  email: '',
+  password: '',
+}
+
+const SignUp = () => {
+  const [user, setUser] = useState({
+    name: '',
+    lastName: '',
+    email: '',
+    password: '',
+  })
+
+  const handleChange = (event) => {
+    const { name, value } = event.target
+
+    setUser((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
+  }
+
+  const saveUser = () => {
+    setUser(clearUser)
+  }
+
   return (
     <Container sx={{ mt: '30px' }}>
       <Grid container justifyContent="center">
@@ -36,7 +64,7 @@ export const SignUp = () => {
             <Typography variant="h5" color="primary">
               Ingrese su Usuario
             </Typography>
-            <MyForm>
+            <MyForm onSubmit={(event) => event.preventDefault()}>
               <Grid container spacing={2}>
                 <Grid item xs={12} md={6} sx={{ mb: '20px' }}>
                   <TextField
@@ -44,6 +72,9 @@ export const SignUp = () => {
                     label="Nombres"
                     variant="outlined"
                     fullWidth
+                    name="name"
+                    value={user.name}
+                    onChange={handleChange}
                   />
                 </Grid>
                 <Grid item xs={12} md={6} sx={{ mb: '20px' }}>
@@ -52,6 +83,9 @@ export const SignUp = () => {
                     label="Apellidos"
                     variant="outlined"
                     fullWidth
+                    name="lastName"
+                    value={user.lastName}
+                    onChange={handleChange}
                   />
                 </Grid>
                 <Grid item xs={12} md={12} sx={{ mb: '20px' }}>
@@ -60,6 +94,9 @@ export const SignUp = () => {
                     label="Correo"
                     variant="outlined"
                     fullWidth
+                    name="email"
+                    value={user.email}
+                    onChange={handleChange}
                   />
                 </Grid>
                 <Grid item xs={12} md={12} sx={{ mb: '20px' }}>
@@ -68,10 +105,19 @@ export const SignUp = () => {
                     label="Contraseña"
                     variant="outlined"
                     fullWidth
+                    name="password"
+                    value={user.password}
+                    onChange={handleChange}
                   />
                 </Grid>
                 <Grid item xs={12} sx={{ mb: '20px' }}>
-                  <Button variant="contained" color="primary" fullWidth>
+                  <Button
+                    type="button"
+                    variant="contained"
+                    color="primary"
+                    fullWidth
+                    onClick={saveUser}
+                  >
                     Crear Cuenta
                   </Button>
                 </Grid>
@@ -86,3 +132,5 @@ export const SignUp = () => {
     </Container>
   )
 }
+
+export default SignUp

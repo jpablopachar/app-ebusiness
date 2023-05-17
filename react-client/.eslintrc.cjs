@@ -11,5 +11,10 @@ module.exports = {
   plugins: ['react-refresh'],
   rules: {
     'react-refresh/only-export-components': 'warn',
+    'react/prop-types': 0,
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-no-target-blank": {
+        "enabled": false
+    }
   },
 }

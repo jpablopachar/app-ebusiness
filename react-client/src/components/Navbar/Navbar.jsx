@@ -16,7 +16,7 @@ import {
 import { useState } from 'react'
 import './Navbar.css'
 
-export const Navbar = () => {
+const Navbar = () => {
   const [open, setOpen] = useState(false)
 
   const openToggle = () => {
@@ -92,3 +92,5 @@ export const Navbar = () => {
     </AppBar>
   )
 }
+
+export default Navbar
