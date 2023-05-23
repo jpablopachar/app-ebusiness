@@ -10,6 +10,7 @@ using WebApi.Middlewares;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,9 +43,18 @@ builder.Services.AddSingleton(mapper);
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
+builder.Services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
+
 builder.Services.AddDbContext<MarketDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SQLServerConnection")));
 
 builder.Services.AddDbContext<AuthDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("AuthConnection")));
+
+builder.Services.AddSingleton<IConnectionMultiplexer>(con =>
+{
+    var configuration = ConfigurationOptions.Parse(builder.Configuration.GetConnectionString("RedisConnection"), true);
+
+    return ConnectionMultiplexer.Connect(configuration);
+});
 
 // Add services to the container.
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
