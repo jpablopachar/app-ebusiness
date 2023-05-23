@@ -1218,6 +1218,9 @@
       "Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.5"
+        },
         "compile": {
           "bin/placeholder/Core.dll": {}
         },
@@ -3652,19 +3655,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Pc\\.nuget\\packages\\": {}
+    "C:\\Users\\jpabl\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Pc\\Documents\\Aplicaciones\\Csharp\\Stacks\\SNA\\app-ebusiness\\server\\BusinessLogic\\BusinessLogic.csproj",
+      "projectUniqueName": "C:\\Users\\jpabl\\Documents\\Aplicaciones\\Csharp\\app-ebusiness\\server\\BusinessLogic\\BusinessLogic.csproj",
       "projectName": "BusinessLogic",
-      "projectPath": "C:\\Users\\Pc\\Documents\\Aplicaciones\\Csharp\\Stacks\\SNA\\app-ebusiness\\server\\BusinessLogic\\BusinessLogic.csproj",
-      "packagesPath": "C:\\Users\\Pc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Pc\\Documents\\Aplicaciones\\Csharp\\Stacks\\SNA\\app-ebusiness\\server\\BusinessLogic\\obj\\",
+      "projectPath": "C:\\Users\\jpabl\\Documents\\Aplicaciones\\Csharp\\app-ebusiness\\server\\BusinessLogic\\BusinessLogic.csproj",
+      "packagesPath": "C:\\Users\\jpabl\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jpabl\\Documents\\Aplicaciones\\Csharp\\app-ebusiness\\server\\BusinessLogic\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Pc\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\jpabl\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -3676,8 +3679,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\Pc\\Documents\\Aplicaciones\\Csharp\\Stacks\\SNA\\app-ebusiness\\server\\Core\\Core.csproj": {
-              "projectPath": "C:\\Users\\Pc\\Documents\\Aplicaciones\\Csharp\\Stacks\\SNA\\app-ebusiness\\server\\Core\\Core.csproj"
+            "C:\\Users\\jpabl\\Documents\\Aplicaciones\\Csharp\\app-ebusiness\\server\\Core\\Core.csproj": {
+              "projectPath": "C:\\Users\\jpabl\\Documents\\Aplicaciones\\Csharp\\app-ebusiness\\server\\Core\\Core.csproj"
             }
           }
         }
@@ -3725,7 +3728,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

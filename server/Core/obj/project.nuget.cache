@@ -1,8 +1,27 @@
 {
   "version": 2,
-  "dgSpecHash": "x6cAe9kOnkJ7QAsV/y32uN56xuZgrKtN6jaPwinCPUpK/l2sMuhO0bS1AmMXIIIJSu48Ab2gthpotqtk52kf8w==",
+  "dgSpecHash": "tXX2djQ12hVuIuUoaKz10RSB5WGIM7KCEoOXuNE9t/tdhsVwQR9GCm4af4h9HhmpHcYOIgh1QL0UM1LXEvdTcg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Pc\\Documents\\Aplicaciones\\Csharp\\Stacks\\SNA\\app-ebusiness\\server\\Core\\Core.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\jpabl\\Documents\\Aplicaciones\\Csharp\\app-ebusiness\\server\\Core\\Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jpabl\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\7.0.5\\microsoft.aspnetcore.cryptography.internal.7.0.5.nupkg.sha512",
+    "C:\\Users\\jpabl\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\7.0.5\\microsoft.aspnetcore.cryptography.keyderivation.7.0.5.nupkg.sha512",
+    "C:\\Users\\jpabl\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\7.0.5\\microsoft.aspnetcore.identity.entityframeworkcore.7.0.5.nupkg.sha512",
+    "C:\\Users\\jpabl\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.5\\microsoft.entityframeworkcore.7.0.5.nupkg.sha512",
+    "C:\\Users\\jpabl\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.5\\microsoft.entityframeworkcore.abstractions.7.0.5.nupkg.sha512",
+    "C:\\Users\\jpabl\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.5\\microsoft.entityframeworkcore.analyzers.7.0.5.nupkg.sha512",
+    "C:\\Users\\jpabl\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.5\\microsoft.entityframeworkcore.relational.7.0.5.nupkg.sha512",
+    "C:\\Users\\jpabl\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\jpabl\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
+    "C:\\Users\\jpabl\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\jpabl\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
+    "C:\\Users\\jpabl\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\jpabl\\.nuget\\packages\\microsoft.extensions.identity.core\\7.0.5\\microsoft.extensions.identity.core.7.0.5.nupkg.sha512",
+    "C:\\Users\\jpabl\\.nuget\\packages\\microsoft.extensions.identity.stores\\7.0.5\\microsoft.extensions.identity.stores.7.0.5.nupkg.sha512",
+    "C:\\Users\\jpabl\\.nuget\\packages\\microsoft.extensions.logging\\7.0.0\\microsoft.extensions.logging.7.0.0.nupkg.sha512",
+    "C:\\Users\\jpabl\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\jpabl\\.nuget\\packages\\microsoft.extensions.options\\7.0.1\\microsoft.extensions.options.7.0.1.nupkg.sha512",
+    "C:\\Users\\jpabl\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
