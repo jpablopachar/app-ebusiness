@@ -13,6 +13,7 @@ namespace WebApi.Dtos
 
             CreateMap<Address, AddressDto>().ReverseMap();
             CreateMap<User, UserDto>().ReverseMap();
+            CreateMap<AddressDto, Core.Entities.PurchaseOrder.Address>().ReverseMap();
         }
     }
 }

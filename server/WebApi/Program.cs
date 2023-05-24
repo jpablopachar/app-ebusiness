@@ -17,6 +17,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IPurchaseOrderService, PurchaseOrderService>();
 
 var builderIdentity = builder.Services.AddIdentityCore<User>();
 

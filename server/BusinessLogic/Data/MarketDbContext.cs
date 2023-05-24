@@ -1,5 +1,6 @@
 using System.Reflection;
 using Core.Entities;
+using Core.Entities.PurchaseOrder;
 using Microsoft.EntityFrameworkCore;
 
 namespace BusinessLogic.Data
@@ -11,6 +12,9 @@ namespace BusinessLogic.Data
         public DbSet<Product> Product { get; set; }
         public DbSet<Brand> Brand { get; set; }
         public DbSet<Category> Category { get; set; }
+        public DbSet<PurchaseOrders> PurchaseOrders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<ShippingType> ShippingTypes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
