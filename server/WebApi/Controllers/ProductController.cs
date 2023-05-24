@@ -2,6 +2,7 @@ using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
 using Core.Specifications;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Dtos;
 using WebApi.Errors;
@@ -55,6 +56,7 @@ namespace WebApi.Controllers
             return _mapper.Map<Product, ProductDto>(product);
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         public async Task<ActionResult<Product>> AddProduct(Product product) {
             var result = await _productRepository.AddAsync(product);
@@ -64,6 +66,7 @@ namespace WebApi.Controllers
             return Ok(product);
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpPut("{id}")]
         public async Task<ActionResult<Product>> UpdateProduct(int id, Product product) {
             product.Id = id;

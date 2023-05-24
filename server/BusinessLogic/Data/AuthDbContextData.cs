@@ -5,14 +5,18 @@ namespace BusinessLogic.Data
 {
     public class AuthDbContextData
     {
-        public static async Task SeedUserAsync(UserManager<User> userManager) {
-            if (!userManager.Users.Any()) {
-                var user = new User {
+        public static async Task SeedUserAsync(UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
+        {
+            if (!userManager.Users.Any())
+            {
+                var user = new User
+                {
                     Name = "Juan",
                     LastName = "Pachar",
                     UserName = "jppachar",
                     Email = "jppachar1993@gmail.com",
-                    Address = new Address {
+                    Address = new Address
+                    {
                         Street = "24 de Mayo y Segundo Cueva Celi",
                         City = "Loja",
                         Department = "Loja",
@@ -21,6 +25,16 @@ namespace BusinessLogic.Data
                 };
 
                 await userManager.CreateAsync(user, "Jppachar1@");
+            }
+
+            if (!roleManager.Roles.Any())
+            {
+                var role = new IdentityRole
+                {
+                    Name = "ADMIN"
+                };
+
+                await roleManager.CreateAsync(role);
             }
         }
     }

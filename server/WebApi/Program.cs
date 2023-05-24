@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using StackExchange.Redis;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +21,8 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 var builderIdentity = builder.Services.AddIdentityCore<User>();
 
 builderIdentity = new IdentityBuilder(builderIdentity.UserType, builderIdentity.Services);
+
+builderIdentity.AddRoles<IdentityRole>();
 
 builderIdentity.AddEntityFrameworkStores<AuthDbContext>();
 builderIdentity.AddSignInManager<SignInManager<User>>();
@@ -42,6 +46,7 @@ IMapper mapper = mapperConfig.CreateMapper();
 builder.Services.AddSingleton(mapper);
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped(typeof(IGenericAuthRepository<>), typeof(GenericAuthRepository<>));
 
 builder.Services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
 
@@ -57,6 +62,8 @@ builder.Services.AddSingleton<IConnectionMultiplexer>(con =>
 });
 
 // Add services to the container.
+builder.Services.TryAddSingleton<ISystemClock, SystemClock>();
+
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
 
 builder.Services.AddControllers();
@@ -102,10 +109,11 @@ using (var environment = app.Services.CreateScope())
         await MarketDbContextData.LoadDataAsync(context, loggerFactory);
 
         var userManager = services.GetRequiredService<UserManager<User>>();
+        var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
         var identityContext = services.GetRequiredService<AuthDbContext>();
 
         await identityContext.Database.MigrateAsync();
-        await AuthDbContextData.SeedUserAsync(userManager);
+        await AuthDbContextData.SeedUserAsync(userManager, roleManager);
     }
     catch (Exception exception)
     {
