@@ -1,32 +1,30 @@
 using Core.Entities;
 using Core.Entities.PurchaseOrder;
 using Core.Interfaces;
+using Core.Specifications;
 
 namespace BusinessLogic.Logic
 {
     public class PurchaseOrderService : IPurchaseOrderService
     {
-        private readonly IGenericRepository<PurchaseOrders> _purchaseOrderRepository;
-        private readonly IGenericRepository<Product> _productRepository;
         private readonly IShoppingCartRepository _shoppingCartRepository;
-        private readonly IGenericRepository<ShippingType> _shippingTypeRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public PurchaseOrderService(IGenericRepository<PurchaseOrders> purchaseOrderRepository, IGenericRepository<Product> productRepository, IShoppingCartRepository shoppingCartRepository, IGenericRepository<ShippingType> shippingTypeRepository)
+        public PurchaseOrderService(IShoppingCartRepository shoppingCartRepository, IUnitOfWork unitOfWork)
         {
-            _purchaseOrderRepository = purchaseOrderRepository;
-            _productRepository = productRepository;
             _shoppingCartRepository = shoppingCartRepository;
-            _shippingTypeRepository = shippingTypeRepository;
+            _unitOfWork = unitOfWork;
         }
 
-        public async Task<PurchaseOrders> AddShippingOrderAsync(string buyerEmail, int shippingType, string shoppingCartId, Core.Entities.PurchaseOrder.Address address)
+        public async Task<PurchaseOrders?> AddShippingOrderAsync(string buyerEmail, int shippingType, string shoppingCartId, Core.Entities.PurchaseOrder.Address address)
         {
             var shoppingCart = await _shoppingCartRepository.GetShoppingCartAsync(shoppingCartId);
 
             var items = new List<OrderItem>();
 
-            foreach (var item in shoppingCart.Items) {
-                var productItem = await _productRepository.GetByIdAsync(item.Id);
+            foreach (var item in shoppingCart.Items)
+            {
+                var productItem = await _unitOfWork.Repository<Product>().GetByIdAsync(item.Id);
 
                 var itemOrdered = new ProductItemOrdered(productItem.Id, productItem.Name, productItem.Image);
 
@@ -35,28 +33,40 @@ namespace BusinessLogic.Logic
                 items.Add(orderItem);
             }
 
-            var shippingTypeEntity = await _shippingTypeRepository.GetByIdAsync(shippingType);
+            var shippingTypeEntity = await _unitOfWork.Repository<ShippingType>().GetByIdAsync(shippingType);
 
             var subtotal = items.Sum(item => item.Price * item.Quantity);
 
             var purchaseOrder = new PurchaseOrders(buyerEmail, address, shippingTypeEntity, items, subtotal);
 
+            _unitOfWork.Repository<PurchaseOrders>().AddEntity(purchaseOrder);
+
+            var result = await _unitOfWork.Complete();
+
+            if (result <= 0) return null;
+
+            await _shoppingCartRepository.DeleteShoppingCartAsync(shoppingCartId);
+
             return purchaseOrder;
         }
 
-        public Task<PurchaseOrders> GetPurchaseOrderByIdAsync(int id, string email)
+        public async Task<PurchaseOrders> GetPurchaseOrderByIdAsync(int id, string email)
         {
-            throw new NotImplementedException();
+            var spec = new PurchaseOrderWithItemsSpecification(id, email);
+
+            return await _unitOfWork.Repository<PurchaseOrders>().GetByIdWithSpec(spec);
         }
 
-        public Task<IReadOnlyList<PurchaseOrders>> GetPurchaseOrdersByUserEmailAsync(string buyerEmail)
+        public async Task<IReadOnlyList<PurchaseOrders>> GetPurchaseOrdersByUserEmailAsync(string buyerEmail)
         {
-            throw new NotImplementedException();
+            var spec = new PurchaseOrderWithItemsSpecification(buyerEmail);
+
+            return await _unitOfWork.Repository<PurchaseOrders>().GetAllWithSpec(spec);
         }
 
-        public Task<IReadOnlyList<ShippingType>> GetShippingTypesAsync()
+        public async Task<IReadOnlyList<ShippingType>> GetShippingTypesAsync()
         {
-            throw new NotImplementedException();
+            return await _unitOfWork.Repository<ShippingType>().GetAllAsync();
         }
     }
 }

@@ -34,5 +34,33 @@ namespace WebApi.Controllers
 
             return Ok(purchaseOrder);
         }
+
+        [HttpGet]
+        public async Task<ActionResult<IReadOnlyList<PurchaseOrders>>> GetPurchaseOrders()
+        {
+            var email = HttpContext.User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+
+            var purchaseOrders = await _purchaseOrder.GetPurchaseOrdersByUserEmailAsync(email);
+
+            return Ok(purchaseOrders);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<PurchaseOrders>> GetPurchaseOrderById(int id)
+        {
+            var email = HttpContext.User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+
+            var purchaseOrder = await _purchaseOrder.GetPurchaseOrderByIdAsync(id, email);
+
+            if (purchaseOrder == null) return NotFound(new CodeErrorResponse(404, "No se encontró la orden de compra"));
+
+            return purchaseOrder;
+        }
+
+        [HttpGet("shippingTypes")]
+        public async Task<ActionResult<IReadOnlyList<ShippingType>>> GetShippingTypes()
+        {
+            return Ok(await _purchaseOrder.GetShippingTypesAsync());
+        }
     }
 }

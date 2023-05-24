@@ -18,5 +18,11 @@ namespace Core.Interfaces
         Task<int> AddAsync(T entity);
 
         Task<int> UpdateAsync(T entity);
+
+        void AddEntity(T entity);
+
+        void UpdateEntity(T entity);
+
+        void DeleteEntity(T entity);
     }
 }
