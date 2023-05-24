@@ -36,17 +36,17 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<PurchaseOrders>>> GetPurchaseOrders()
+        public async Task<ActionResult<IReadOnlyList<PurchaseOrderResponseDto>>> GetPurchaseOrders()
         {
             var email = HttpContext.User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
 
             var purchaseOrders = await _purchaseOrder.GetPurchaseOrdersByUserEmailAsync(email);
 
-            return Ok(purchaseOrders);
+            return Ok(_mapper.Map<IReadOnlyList<PurchaseOrders>, IReadOnlyList<PurchaseOrderResponseDto>>(purchaseOrders));
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<PurchaseOrders>> GetPurchaseOrderById(int id)
+        public async Task<ActionResult<PurchaseOrderResponseDto>> GetPurchaseOrderById(int id)
         {
             var email = HttpContext.User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
 
@@ -54,7 +54,7 @@ namespace WebApi.Controllers
 
             if (purchaseOrder == null) return NotFound(new CodeErrorResponse(404, "No se encontró la orden de compra"));
 
-            return purchaseOrder;
+            return _mapper.Map<PurchaseOrders, PurchaseOrderResponseDto>(purchaseOrder);
         }
 
         [HttpGet("shippingTypes")]
