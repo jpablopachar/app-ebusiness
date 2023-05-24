@@ -32,7 +32,7 @@ namespace WebApi.Controllers
 
             if (purchaseOrder == null) return BadRequest(new CodeErrorResponse(400, "Se produjo un error al crear la orden de compra"));
 
-            return Ok(purchaseOrder);
+            return Ok(_mapper.Map<PurchaseOrders, PurchaseOrderResponseDto>(purchaseOrder));
         }
 
         [HttpGet]
